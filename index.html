@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solar System</title>
+
+<style>
+body {
+  margin: 0;
+  background: url('texture/2k_stars.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.solar-system {
+  position: relative;
+  width: 1000px;
+  height: 1000px;
+  margin: 0;
+}
+
+/* SUN */
+.sun {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: url('texture/2k_sun.jpg') no-repeat center;
+  background-size: cover;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ORBITS */
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+}
+
+/* PLANETS (FIXED) */
+.planet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  text-align: center;
+}
+
+/* PLANET BODY */
+.planet::before {
+  content: '';
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+/* LABELS */
+.label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: #fff;
+  margin-top: 3px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* PLANET SIZES + TEXTURES */
+.mercury::before { width: 18px; height: 18px; background-image: url('texture/2k_mercury.jpg'); }
+.venus::before   { width: 28px; height: 28px; background-image: url('texture/2k_venus_surface.jpg'); }
+.earth::before   { width: 30px; height: 30px; background-image: url('texture/2k_earth_daymap.jpg'); }
+.mars::before    { width: 24px; height: 24px; background-image: url('texture/2k_mars.jpg'); }
+.jupiter::before { width: 65px; height: 65px; background-image: url('texture/2k_jupiter.jpg'); }
+.saturn::before  { width: 55px; height: 55px; background-image: url('texture/2k_saturn.jpg'); }
+.uranus::before  { width: 42px; height: 42px; background-image: url('texture/2k_uranus.jpg'); }
+.neptune::before { width: 40px; height: 40px; background-image: url('texture/2k_neptune.jpg'); }
+
+/* SATURN RING */
+.ring {
+  position: absolute;
+  width: 140px;
+  height: 80px;
+  background: url('texture/2k_saturn_ring_alpha.png') no-repeat center;
+  background-size: contain;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(75deg);
+  pointer-events: none;
+}
+
+/* MOON ORBIT */
+.moon-orbit {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  top: 50%;
+  left: 50%;
+}
+
+/* MOON WRAPPER */
+.moon-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+.moon-wrapper .label {
+  position: static;
+  display: block;
+  font-size: 8px;
+  margin-top: 2px;
+  color: #fff;
+}
+
+
+/* MOON */
+.moon {
+  width: 10px;
+  height: 10px;
+  background: url('texture/2k_moon.jpg') no-repeat center;
+  background-size: cover;
+  border-radius: 50%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="solar-system">
+  <div class="sun"></div>
+
+  <div class="orbit" data-speed="0.05"><div class="planet mercury"><span class="label">Mercury</span></div></div>
+  <div class="orbit" data-speed="0.04"><div class="planet venus"><span class="label">Venus</span></div></div>
+
+  <div class="orbit" data-speed="0.03">
+    <div class="planet earth">
+      <div class="moon-orbit" data-speed="0.2">
+        <div class="moon-wrapper">
+          <div class="moon"></div>
+          <span class="label">Moon</span>
+        </div>
+      </div>
+      <span class="label">Earth</span>
+    </div>
+  </div>
+
+  <div class="orbit" data-speed="0.025"><div class="planet mars"><span class="label">Mars</span></div></div>
+  <div class="orbit" data-speed="0.02"><div class="planet jupiter"><span class="label">Jupiter</span></div></div>
+
+  <div class="orbit" data-speed="0.015">
+    <div class="planet saturn">
+      <div class="ring"></div>
+      <span class="label">Saturn</span>
+    </div>
+  </div>
+
+  <div class="orbit" data-speed="0.012"><div class="planet uranus"><span class="label">Uranus</span></div></div>
+  <div class="orbit" data-speed="0.01"><div class="planet neptune"><span class="label">Neptune</span></div></div>
+</div>
+
+<script src="script/aframe.min.js"></script>
+</body>
+</html>
